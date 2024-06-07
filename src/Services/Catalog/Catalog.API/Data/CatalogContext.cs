@@ -8,6 +8,7 @@ namespace Catalog.API.Data
                             // get setting from appsetting.json file 
         public CatalogContext(IConfiguration configuration)
         {
+            Console.WriteLine(configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
             // connect to mongo database
             var client = new MongoClient(configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
             var database = client.GetDatabase(configuration.GetValue<string>("DatabaseSettings:DatabaseName"));
